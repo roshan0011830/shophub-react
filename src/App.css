@@ -70,6 +70,17 @@ a {
   padding: 0.5rem 1.4rem;
   border: hidden;
   border-radius: 0.4rem;
+  width: fit-content;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.btn:hover{
+  scale: 1.04;
+}
+
+.btn:active{
+  scale: 0.9;
 }
 
 .btn-primary {
@@ -118,7 +129,13 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 40px;
+  padding: 20px 0;
+
   
+}
+
+.page-title {
+  text-align: center;
 }
 
 .product-card {
@@ -165,5 +182,63 @@ a {
 .product-card-buttons{
   display: flex;
   gap: 30px;
+}
+
+
+/* -------------Auth-------- */
+
+.auth-container {
+  background-color: #e8e8e8;
+  width: 350px;
+  margin: 30px auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  background-color: #fff;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  border-radius: 0.4rem;
+}
+
+
+
+.form-input {
+  border: hidden;
+  text-align: center;
+  outline: none;
+  background-color: #fff;
+}
+
+
+
+.auth-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.form-error{
+  color: crimson;
+  position: relative;
+  top: -8px;
+  font-size: 15px;
+}
+
+.btn-red{
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
+.auth-error{
+  background-color: rgb(251, 210, 218);
+  color: crimson;
+  padding: 5px;
 }
 
