@@ -10,17 +10,18 @@ import { useAuth } from '../context/AuthContext.jsx';
 
 function Auth() {
 
-  const [mode, setMode] = useState("signup");
+  // const [mode, setMode] = useState("signup");
+  //usecontext se laya
+  // const {signUp, user, logout, login} = useContext(AuthContext)
+
+  //custom hook se baar baar 
+  const {signUp, login, mode, setMode} = useAuth();
+
 
   const [err, setErr] = useState(null);
 
   const navigate = useNavigate();
 
-  //usecontext se laya
-  // const {signUp, user, logout, login} = useContext(AuthContext)
-
-  //custom hook se baar baar 
-  const {signUp, login} = useAuth();
 
   //form validation ke liye
   const {register, handleSubmit, formState: {errors}} = useForm();

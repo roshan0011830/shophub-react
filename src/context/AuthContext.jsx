@@ -5,6 +5,8 @@ export const AuthContext = createContext(null);
 
 export default function AuthProvider({children}){
 
+  const [mode, setMode] = useState("signup");
+
   const [user, setUser] = useState(localStorage.getItem("currentUserEmail") ? {email : localStorage.getItem("currentUserEmail")}: null
 );
 
@@ -59,7 +61,7 @@ export default function AuthProvider({children}){
 
 
 
-  return <AuthContext.Provider value={{signUp, user, logout, login}}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{signUp, user, logout, login, mode, setMode}}>{children}</AuthContext.Provider>;
 }
 
 

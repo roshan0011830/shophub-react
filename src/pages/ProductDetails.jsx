@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react'
 import {useNavigate, useParams } from 'react-router-dom'
 import { getProductById } from '../data/products';
 
+import { useCart } from '../context/CartContext.jsx';
+
+
+
 function ProductDetails() {
 
   const {id} = useParams();
-  const [product, setProduct] = useState([]);
-
+  const [product, setProduct] = useState(null);
   const navigate = useNavigate();
+
 
   useEffect(()=>{
     const foundProduct = getProductById(id);
@@ -19,12 +23,23 @@ function ProductDetails() {
     }
 
     //ye agar product nhi hai laptop slow ke karan
-    if(!product){
-      return <h1>Loading...</h1>
-    }
-
+    
     setProduct(foundProduct);
   }, [id]);
+  
+  if(!product){
+    return <h1>Loading...</h1>
+  }
+
+  //view detail add to cart label
+  const {addToCart, cartItems } = useCart();
+  
+    const productInCart = cartItems.find((item)=>(item.id === Number(product.id)))
+  
+    const productQunatityLabel = productInCart ? `(${productInCart.quantity})` : ("");
+
+
+
 
 
 
@@ -42,7 +57,7 @@ function ProductDetails() {
               {product.description}
             </p>
 
-            <button className="btn btn-primary">Add to Cart</button>
+            <button className="btn btn-primary" onClick={() => addToCart(product.id) }>Add to Cart {productQunatityLabel}</button>
           </div>
         </div>
       </div>
