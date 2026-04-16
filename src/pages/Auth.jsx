@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react'
 
 import { useForm } from 'react-hook-form';
 
-import { AuthContext } from '../context/AuthContext.jsx';
+//iski jarurt nhi ab ek baar custom hook bana liya 
+// import { AuthContext } from '../context/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext.jsx';
 
 
 function Auth() {
@@ -15,7 +17,10 @@ function Auth() {
   const navigate = useNavigate();
 
   //usecontext se laya
-  const {signUp, user, logout, login} = useContext(AuthContext)
+  // const {signUp, user, logout, login} = useContext(AuthContext)
+
+  //custom hook se baar baar 
+  const {signUp, login} = useAuth();
 
   //form validation ke liye
   const {register, handleSubmit, formState: {errors}} = useForm();
@@ -40,9 +45,6 @@ function Auth() {
       setErr(result.error)
     }
 
-    console.log(result);
-
-
   }
 
 
@@ -50,7 +52,7 @@ function Auth() {
     <div className="page">
       <div className="container">
         <div className="auth-container">
-          {user ? (
+          {/* {user ? (
             <>
               <p>User logged in : {user.email}</p>
               <button className="btn btn-red" onClick={()=>logout()}>
@@ -59,7 +61,7 @@ function Auth() {
             </>
           ) : (
             <p>not logged in</p>
-          )}
+          )} */}
 
           <h1 className="page-title">
             {mode === "signup" ? "Sign Up" : "Login"}

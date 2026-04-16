@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 
 export const AuthContext = createContext(null);
 
@@ -60,4 +60,13 @@ export default function AuthProvider({children}){
 
 
   return <AuthContext.Provider value={{signUp, user, logout, login}}>{children}</AuthContext.Provider>;
+}
+
+
+//custom hooks apna
+
+export function useAuth(){
+  const context = useContext(AuthContext)
+
+  return context;
 }
